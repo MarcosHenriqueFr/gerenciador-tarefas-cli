@@ -4,27 +4,47 @@ public final class Commands {
 
     private Commands() {}
 
-    public static void addTask(String[] args){
+    public static void addTask(TaskManager manager, String[] args){
+        /*
+            Uso de StringBuilder para pegar todos os outros argumentos depois de 'add'
+            Remoção do último espaço
+         */
+        StringBuilder taskName = new StringBuilder();
+        Task.aumentarQuant();
+        Long ID = Task.getQuantTasks();
 
+        for(int i = 1; i < args.length; i++){
+            taskName.append(args[i]).append(" ");
+        }
+        taskName.deleteCharAt(taskName.length() - 1);
+
+        /*
+            Adição do nome na tarefa, o ID vem de um atributo static de TASK.
+            Atributo atualizado cada vez que adiciona uma tarefa
+         */
+
+        Task task = new Task(ID, taskName.toString());
+        manager.getTasks().add(task);
+        manager.getTasks().forEach(System.out::println);
     }
     
-    public static void listCommand(String[] args){
+    public static void listCommand(TaskManager manager, String[] args){
         
     }
 
-    public static void markProgress(String[] args) {
+    public static void markProgress(TaskManager manager, String[] args) {
 
     }
 
-    public static void markDone(String[] args) {
+    public static void markDone(TaskManager manager, String[] args) {
 
     }
 
-    public static void updateTask(String[] args) {
+    public static void updateTask(TaskManager manager, String[] args) {
 
     }
 
-    public static void deleteTask(String[] args) {
+    public static void deleteTask(TaskManager manager, String[] args) {
 
     }
 
