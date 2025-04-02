@@ -1,4 +1,4 @@
-package principal.tt.modelo;
+package main.tt.modelo;
 
 public class Tarefa {
 
