@@ -1,6 +1,6 @@
 package main.tt.modelo;
 
-public class Tarefa {
+public class Task {
 
     // TODO fazer os principais atributos das tarefas
 }

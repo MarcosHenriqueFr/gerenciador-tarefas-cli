@@ -1,0 +1,75 @@
+package main.tt.visao;
+
+import main.tt.modelo.Commands;
+
+import java.util.Scanner;
+
+public class mainTerminal {
+
+    Scanner scan = new Scanner(System.in);
+
+    public mainTerminal() {
+
+        begin();
+        mainMenu();
+    }
+
+    private void begin() {
+        System.out.println("Digite help se precisar de ajuda!");
+    }
+
+    private void mainMenu() {
+        System.out.println("Digite 'exit' para sair!");
+
+        String comandos;
+        do {
+            comandos = userInput();
+            String[] args = comandos.split("\\s+");
+
+            switch (args[0]) {
+                case "add":
+                    Commands.addTask(args);
+                    System.out.println("Tarefa adicionada");
+                    break;
+                case "list":
+                    Commands.listCommand(args);
+                    System.out.println("Comandos de lista");
+                    break;
+                case "mark-in-progress":
+                    Commands.markProgress(args);
+                    System.out.println("Marcado como em progresso");
+                    break;
+                case "mark-done":
+                    Commands.markDone(args);
+                    System.out.println("Marcada como feita");
+                    break;
+                case "update":
+                    Commands.updateTask(args);
+                    System.out.println("Task atualizada");
+                    break;
+                case "delete":
+                    Commands.deleteTask(args);
+                    System.out.println("Task eliminada");
+                    break;
+                case "help":
+                    Commands.help();
+                    break;
+                case "exit":
+                    System.out.println("Fim do programa!");
+                    break;
+                default:
+                    System.out.println("Comando desconhecido! Digite 'help' se precisar de ajuda!");
+            }
+        } while (!comandos.equalsIgnoreCase("exit"));
+    }
+
+    private String userInput(){
+        String INPUT_COLOR = "\u001B[33m";
+        String TERMINAL_COLOR_RESET = "\033[0m";
+
+        String padrao = INPUT_COLOR + "task-cli => " + TERMINAL_COLOR_RESET;
+        System.out.print(padrao);
+
+        return scan.nextLine();
+    }
+}
