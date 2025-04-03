@@ -5,6 +5,7 @@ import main.tt.modelo.TaskManager;
 
 import java.util.Scanner;
 
+// TODO fazer testes unitarios
 public class mainTerminal {
 
     TaskManager manager = new TaskManager();
@@ -43,8 +44,7 @@ public class mainTerminal {
                     System.out.println("Marcada como feita");
                     break;
                 case "update":
-                    Commands.updateTask(manager, args);
-                    System.out.println("Task atualizada");
+                    Commands.updateTaskName(manager, args);
                     break;
                 case "delete":
                     Commands.deleteTask(manager, args);
@@ -53,6 +53,8 @@ public class mainTerminal {
                 case "help":
                     Commands.help();
                     break;
+                case "clear":
+                    Commands.limpar();
                 case "exit":
                     System.out.println("Fim do programa!");
                     break;
@@ -62,12 +64,15 @@ public class mainTerminal {
         } while (!comandos.equalsIgnoreCase("exit"));
     }
 
+    /*
+        Modifica a cor do texto no terminal e reseta para a cor padrão
+     */
     private String userInput(){
         String INPUT_COLOR = "\u001B[33m";
         String TERMINAL_COLOR_RESET = "\033[0m";
 
-        String padrao = INPUT_COLOR + "task-cli => " + TERMINAL_COLOR_RESET;
-        System.out.print(padrao);
+        String consoleText = INPUT_COLOR + "task-cli => " + TERMINAL_COLOR_RESET;
+        System.out.print(consoleText);
 
         return scan.nextLine();
     }

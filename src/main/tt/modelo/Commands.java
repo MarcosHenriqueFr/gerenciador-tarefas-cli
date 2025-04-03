@@ -34,7 +34,10 @@ public final class Commands {
             System.out.println("Erro: " + e.getMessage());
         }
     }
-    
+
+    /*
+        Verifica qual é o tipo de comando de lista especificado
+     */
     public static void listCommand(TaskManager manager, String[] args){
         try{
             verificarSegundoArg(args);
@@ -75,16 +78,29 @@ public final class Commands {
                 .forEach(System.out::println);
     }
 
+    /*
+        Padrão para verificar os argumentos
+        verificarSegundoArg -> verifica o próximo elemento após o comando. ex: 'add a'
+        Integer.parseInt() -> pode lançar uma NumberFormatException
+        verifyTaskExistence(taskmanager, args) -> verifica se aquele elemento existe na lista do taskmanager
+
+     */
+
     public static void markProgress(TaskManager manager, String[] args) {
         try {
             verificarSegundoArg(args);
 
             int inputId = Integer.parseInt(args[1]);
 
-            boolean exists = manager.getTasks().stream()
-                            .anyMatch(task -> task.getID() == inputId);
+            boolean exists = verifyTaskExistence(manager, inputId);
 
-            verifyTaskExistence(manager, exists, inputId);
+            if(exists){
+                manager.getTasks().stream()
+                        .filter(task -> task.getID() == inputId)
+                        .forEach(task -> task.setStatus(Status.IN_PROGRESS));
+            } else {
+                System.out.println("Elemento não existe.");
+            }
         } catch (NullPointerException e) {
             System.out.println("Erro: " + e.getMessage());
         } catch (NumberFormatException e) {
@@ -93,32 +109,75 @@ public final class Commands {
     }
 
     public static void markDone(TaskManager manager, String[] args) {
+        try {
+            verificarSegundoArg(args);
 
+            int inputId = Integer.parseInt(args[1]);
+
+            boolean exists = verifyTaskExistence(manager, inputId);
+
+            if(exists){
+                manager.getTasks().stream()
+                        .filter(task -> task.getID() == inputId)
+                        .forEach(task -> task.setStatus(Status.DONE));
+            } else {
+                System.out.println("Elemento não existe.");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: Não foi passado um número.");
+        }
     }
 
-    public static void updateTask(TaskManager manager, String[] args) {
+    /*
+        Possui uma verificação a mais
+        Após verificar 'update id', ainda verifica se possui mais um 3° argumento
+     */
+    public static void updateTaskName(TaskManager manager, String[] args) {
+        try {
+            verificarSegundoArg(args);
+            int inputId = Integer.parseInt(args[1]);
+            boolean exists = verifyTaskExistence(manager, inputId);
 
+            if(exists){
+                StringBuilder newName = new StringBuilder();
+
+                if(args.length == 2){
+                    throw new NullPointerException("Não foi repassado nenhum novo nome.");
+                }
+
+                for(int i = 2; i < args.length; i++){
+                    newName.append(args[i]).append(" ");
+                }
+
+                newName.deleteCharAt(newName.length() - 1);
+
+                manager.getTasks().stream()
+                        .filter(task -> task.getID() == inputId)
+                        .forEach(task -> task.setName(newName.toString()));
+
+                System.out.println("Nome atualizado!!!");
+            } else {
+                System.out.println("Elemento não existe.");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: Não foi passado um número.");
+        }
     }
 
     public static void deleteTask(TaskManager manager, String[] args) {
 
     }
 
-    private static void verifyTaskExistence(TaskManager manager, boolean exists, int inputId){
-        if(exists){
-            manager.getTasks().stream()
-                    .filter(task -> task.getID() == inputId)
-                    .forEach(task -> task.setStatus(Status.IN_PROGRESS));
-        } else {
-            System.out.println("Elemento não existe.");
-        }
+    private static boolean verifyTaskExistence(TaskManager manager, int inputId){
+        return manager.getTasks().stream()
+                .anyMatch(task -> task.getID() == inputId);
     }
 
     private static void verificarSegundoArg(String[] args){
-        /*
-            Verifica se foi passado mais de um argumento na array args e depois chama a função especificada
-         */
-
         if(args.length == 1){
             throw new NullPointerException("Não foi repassado nenhum comando. Digite 'help'.");
         }
@@ -139,5 +198,9 @@ public final class Commands {
                 \t\t\tlist todo -> mostra todos as tarefas marcados como a fazer.
                 \t\t\tlist in-progress -> mostra todas as tarefas marcadas como em progresso.
                 """);
+    }
+
+    // Limpa o console dependendo do terminal utilizado
+    public static void limpar() {
     }
 }
