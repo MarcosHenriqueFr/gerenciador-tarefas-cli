@@ -34,7 +34,6 @@ public class mainTerminal {
                     break;
                 case "list":
                     Commands.listCommand(manager, args);
-                    System.out.println("Comandos de lista");
                     break;
                 case "mark-in-progress":
                     Commands.markProgress(manager, args);

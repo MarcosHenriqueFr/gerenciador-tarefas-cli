@@ -29,7 +29,43 @@ public final class Commands {
     }
     
     public static void listCommand(TaskManager manager, String[] args){
-        
+
+        /*
+            Verifica se foi passado mais de um argumento na array args e depois chama a função especificada
+         */
+        try {
+            if(args.length == 1){
+                throw new NullPointerException("Não possui especificou o comando. Digite 'help'.");
+            }
+
+            switch(args[1]){
+                case "done":
+                    listDone(manager);
+                    break;
+                case "todo":
+                    listTodo(manager);
+                    break;
+                case "in-progress":
+                    listInProgress(manager);
+                    break;
+                default:
+                    System.out.println("Comando 'list' não identificado. Digite 'help'");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    private static void listInProgress(TaskManager manager) {
+        System.out.println("In progress");
+    }
+
+    private static void listTodo(TaskManager manager) {
+        System.out.println("Todo");
+    }
+
+    private static void listDone(TaskManager manager) {
+        System.out.println("Done");
     }
 
     public static void markProgress(TaskManager manager, String[] args) {
