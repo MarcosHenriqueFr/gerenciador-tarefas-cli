@@ -80,7 +80,7 @@ public class Task {
 
     @Override
     public String toString(){
-        return String.format("Id: %d | Nome: %s | Data: %s | Hora: %s",
-                ID, name, updatedAt.format(formatData), updatedAt.format(formatTime));
+        return String.format("Id: %d | Nome: %s | Data: %s | Hora: %s | Status: %s",
+                ID, name, updatedAt.format(formatData), updatedAt.format(formatTime), status);
     }
 }

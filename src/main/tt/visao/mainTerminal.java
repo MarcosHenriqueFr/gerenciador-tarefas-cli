@@ -37,7 +37,6 @@ public class mainTerminal {
                     break;
                 case "mark-in-progress":
                     Commands.markProgress(manager, args);
-                    System.out.println("Marcado como em progresso");
                     break;
                 case "mark-done":
                     Commands.markDone(manager, args);
