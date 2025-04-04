@@ -37,20 +37,19 @@ public class mainTerminal {
                     break;
                 case "mark-done":
                     Commands.markDone(manager, args);
-                    System.out.println("Marcada como feita");
                     break;
                 case "update":
                     Commands.updateTaskName(manager, args);
                     break;
                 case "delete":
                     Commands.deleteTask(manager, args);
-                    System.out.println("Task eliminada");
                     break;
                 case "help":
                     Commands.help();
                     break;
                 case "clear":
                     Commands.limpar();
+                    break;
                 case "exit":
                     System.out.println("Fim do programa!");
                     break;

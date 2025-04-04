@@ -189,6 +189,8 @@ public final class Commands {
                                 .get();
 
                 manager.getTasks().remove(task);
+
+                System.out.println("Tarefa excluída.");
             } else {
                 System.out.println("Elemento não existe.");
             }
@@ -215,6 +217,7 @@ public final class Commands {
         // TextBlock - Java 13
         System.out.print("""
                 \t\thelp -> Mostra os comandos do sistema.
+                \t\tclear -> Limpa a tela
                 \t\tadd -> adiciona uma nova tarefa, com a info do id.
                 \t\tupdate -> atualiza uma informação da tarefa, com a info do id.
                 \t\tdelete -> elimina uma tarefa, com a info do id.
@@ -230,5 +233,14 @@ public final class Commands {
 
     // Limpa o console dependendo do terminal utilizado
     public static void limpar() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                new ProcessBuilder("clear").inheritIO().start().waitFor();
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao limpar o console: " + e.getMessage());
+        }
     }
 }
