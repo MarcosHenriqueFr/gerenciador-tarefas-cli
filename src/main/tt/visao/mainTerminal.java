@@ -13,16 +13,12 @@ public class mainTerminal {
 
     public mainTerminal() {
 
-        begin();
         mainMenu();
     }
 
-    private void begin() {
-        System.out.println("Digite help se precisar de ajuda!");
-    }
-
     private void mainMenu() {
-        System.out.println("Digite 'exit' para sair!");
+        System.out.println("Digite 'help' se precisar de ajuda.");
+        System.out.println("Digite 'exit' para sair.");
 
         String comandos;
         do {
