@@ -11,9 +11,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    Loader que carrega no inicio de cada inicio do programa.
+ */
+
 public final class TaskManager {
-    // TODO fazer as principais partes do gerenciador de tarefa - leitura e escrita de arquivo
-    // É mais um loader de arquivos
     private final List<Task> tasks = new ArrayList<>();
 
     public TaskManager(){}
@@ -29,6 +31,7 @@ public final class TaskManager {
                 writer.write(t.getID() + " ");
                 writer.write(t.getName() + " ");
                 writer.write(t.getStatus() + " ");
+                writer.write(t.getUpdatedAt() + " ");
                 writer.write(t.getCreatedAt() + "\n");
             }
 
@@ -71,9 +74,10 @@ public final class TaskManager {
                 Long ID = Long.parseLong(attributes[0]);
                 String name = attributes[1];
                 Status status = Status.valueOf(attributes[2]);
-                LocalDateTime createdAt = LocalDateTime.parse(attributes[3], parser);
+                LocalDateTime updatedAt = LocalDateTime.parse(attributes[3], parser);
+                LocalDateTime createdAt = LocalDateTime.parse(attributes[4], parser);
 
-                tasks.add(new Task(ID, name, status, createdAt));
+                tasks.add(new Task(ID, name, status, createdAt, updatedAt));
                 Task.aumentarQuant();
             }
 

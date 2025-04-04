@@ -12,7 +12,6 @@ public class mainTerminal {
     Scanner scan = new Scanner(System.in);
 
     public mainTerminal() {
-
         mainMenu();
     }
 
@@ -54,9 +53,6 @@ public class mainTerminal {
                 case "exit":
                     System.out.println("Fim do programa!");
                     manager.writeFile();
-                    break;
-                case "read":
-                    manager.readFile();
                     break;
                 default:
                     System.out.println("Comando desconhecido! Digite 'help' se precisar de ajuda!");

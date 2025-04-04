@@ -25,12 +25,12 @@ public class Task {
         updatedAt = LocalDateTime.now();
     }
 
-    Task(Long ID, String name, Status status, LocalDateTime createdAt){
+    Task(Long ID, String name, Status status, LocalDateTime createdAt, LocalDateTime updatedAt){
         this.name = name;
         this.ID = ID;
         this.status = status;
         this.createdAt = createdAt;
-        this.updatedAt = LocalDateTime.now();
+        this.updatedAt = updatedAt;
     }
 
     public LocalDateTime getCreatedAt(){

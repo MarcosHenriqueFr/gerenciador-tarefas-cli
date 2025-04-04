@@ -1,5 +1,6 @@
 package main.tt.modelo;
 
+import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 public final class Commands {
@@ -163,7 +164,11 @@ public final class Commands {
 
                 manager.getTasks().stream()
                         .filter(task -> task.getID() == inputId)
-                        .forEach(task -> task.setName(newName.toString()));
+                        .forEach(task -> {
+                            task.setName(newName.toString());
+                            task.setUpdatedAt(LocalDateTime.now());
+                        });
+
 
                 System.out.println("Nome atualizado!!!");
             } else {
