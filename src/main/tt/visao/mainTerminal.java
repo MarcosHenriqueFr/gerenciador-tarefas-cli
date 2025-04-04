@@ -19,6 +19,7 @@ public class mainTerminal {
     private void mainMenu() {
         System.out.println("Digite 'help' se precisar de ajuda.");
         System.out.println("Digite 'exit' para sair.");
+        manager.readFile();
 
         String comandos;
         do {
@@ -52,6 +53,10 @@ public class mainTerminal {
                     break;
                 case "exit":
                     System.out.println("Fim do programa!");
+                    manager.writeFile();
+                    break;
+                case "read":
+                    manager.readFile();
                     break;
                 default:
                     System.out.println("Comando desconhecido! Digite 'help' se precisar de ajuda!");

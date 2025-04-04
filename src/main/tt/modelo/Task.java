@@ -9,7 +9,6 @@ public class Task {
 
     private final Long ID;
     private String name;
-    private String description;
     private Status status;
 
     private final LocalDateTime createdAt;
@@ -26,6 +25,14 @@ public class Task {
         updatedAt = LocalDateTime.now();
     }
 
+    Task(Long ID, String name, Status status, LocalDateTime createdAt){
+        this.name = name;
+        this.ID = ID;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = LocalDateTime.now();
+    }
+
     public LocalDateTime getCreatedAt(){
         return createdAt;
     }
@@ -38,24 +45,12 @@ public class Task {
         quantTasks++;
     }
 
-    static void diminuirQuant(){
-        quantTasks--;
-    }
-
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Status getStatus(){
