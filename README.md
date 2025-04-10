@@ -53,7 +53,15 @@ java -cp bin main.tt.Application
     - Foi aplicado uma estrutura modificada do MVC, sem usar o Controller, como o projeto é simples os dados do model já modificam a view diretamente.
 
 
-<hr><br><br><br>
+<h2>O que será produzido a seguir</h2>
+
+Planejo melhorar esse projeto simples usando diferentes tecnologias:
+
+- Usar uma build tool para facilitar os clones do projeto;
+- Usar JavaFX para interface gráfica;
+- Usar JSON como estrutura de arquivo;
+- Usar Estrutura de dados para organização das tarefas
+<hr><br>
 
 
-Ideia inicial de projeto derivada do site: [https://roadmap.sh/projects/task-tracker]
+Ideia <strong>inicial</strong> de projeto derivada do site: [https://roadmap.sh/projects/task-tracker]
