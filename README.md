@@ -8,7 +8,7 @@
 <h3>Pré-requisitos</h3>
 <ul>
     <li>Java SDK 21</li>
-    <li>Git Atualizado</li>
+    <li>Git
 </ul>
 
 <h3>Como iniciar o Projeto</h3>
@@ -39,26 +39,21 @@ java -cp bin main.tt.Application
 
 1. Uso de Orientação a objetos
 
-1.1 Criação da Tarefa
+- 1.1 Criação da Tarefa
 
-<ol>
-    <li> A tarefa possui as informações de ID, Nome, Status, Data de Criação e de Update.
-    <li> A tarefa possui um atributo estático que atualiza a cada tarefa nova adicionada.
-</ol>
+    - A tarefa possui as informações de ID, Nome, Status, Data de Criação e de Update.
+    - A tarefa possui um atributo estático que atualiza a cada tarefa nova adicionada.
 
-1.2 Criação do Gerenciador de Tarefas
+- 1.2 Criação do Gerenciador de Tarefas
 
-<ol>
-    <li>É quem faz a comunicação entre o arquivo e as informações dadas pelo usuário.
-    <li>O arquivo é atualizado toda vez que o usuário fecha o programa.
-</ol>
+    - É quem faz a comunicação entre o arquivo e as informações dadas pelo usuário.
+    - O arquivo é atualizado toda vez que o usuário fecha o programa.
 
 2. Uso Simples do MVC
+    - Foi aplicado uma estrutura modificada do MVC, sem usar o Controller, como o projeto é simples os dados do model já modificam a view diretamente.
 
-2.1 
 
-- Foi aplicado uma estrutura básica do MVC, como o projeto é simples os dados do model já modificam a view diretamente
-
+<hr><br><br><br>
 
 
 Ideia inicial de projeto derivada do site: [https://roadmap.sh/projects/task-tracker]
