@@ -11,7 +11,7 @@
     <li>Git
 </ul>
 
-<h3>Como iniciar o Projeto</h3>
+<h2>Como iniciar o Projeto</h2>
 
 Abra a pasta onde vai baixar o projeto.
 
@@ -35,7 +35,8 @@ Execute o programa:
 java -cp bin main.tt.Application
 ```
 
-<h4>O que foi aprendido?</h4>
+<br>
+<h2>O que foi aprendido?</h2>
 
 1. Uso de Orientação a objetos
 
@@ -52,7 +53,7 @@ java -cp bin main.tt.Application
 2. Uso Simples do MVC
     - Foi aplicado uma estrutura modificada do MVC, sem usar o Controller, como o projeto é simples os dados do model já modificam a view diretamente.
 
-
+<br>
 <h2>O que será produzido a seguir</h2>
 
 Planejo melhorar esse projeto simples usando diferentes tecnologias:
