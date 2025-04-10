@@ -7,7 +7,7 @@
 
 <h3>Pré-requisitos</h3>
 <ul>
-    <li>Java JDK 21</li>
+    <li>JDK 21</li>
     <li>Git
 </ul>
 
